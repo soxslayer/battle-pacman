@@ -41,7 +41,7 @@ private:
   bool mGrid = false;
   QPointF mSelectBegin;
   QPointF mSelectEnd;
-  bool mSelectActive;
+  bool mSelectActive = false;
   EditAction* mEditAction = nullptr;
 
   void renderMaze();

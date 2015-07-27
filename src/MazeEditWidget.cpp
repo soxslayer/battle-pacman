@@ -54,14 +54,14 @@ void MazeEditWidget::drawForeground(QPainter* painter, const QRectF& rect)
     int tileWidth = mSpriteSheet.tileInfo().width();
     int tileHeight = mSpriteSheet.tileInfo().height();
 
-    for (int x = (rect.left() / tileWidth) * tileWidth; x < rect.right();
+    for (int x = (int)(rect.left() / tileWidth) * tileWidth; x < rect.right();
          x += tileWidth) {
       painter->drawLine(x, rect.top(), x, rect.bottom());
       painter->drawLine(x + tileWidth - 1, rect.top(),
                         x + tileWidth - 1, rect.bottom());
     }
 
-    for (int y = (rect.top() / tileHeight) * tileHeight; y < rect.bottom();
+    for (int y = (int)(rect.top() / tileHeight) * tileHeight; y < rect.bottom();
          y += tileHeight) {
       painter->drawLine(rect.left(), y, rect.right(), y);
       painter->drawLine(rect.left(), y + tileHeight - 1,
@@ -69,7 +69,7 @@ void MazeEditWidget::drawForeground(QPainter* painter, const QRectF& rect)
     }
   }
 
-  if (mSelectActive) {
+  if (mSelectActive && mEditAction) {
     painter->setPen(Qt::blue);
     QPair<QPointF, QPointF> actionPoints = mEditAction->getSelection(
       mSelectBegin, mSelectEnd);
