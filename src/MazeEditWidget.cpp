@@ -71,9 +71,22 @@ void MazeEditWidget::drawForeground(QPainter* painter, const QRectF& rect)
 
   if (mSelectActive && mEditAction) {
     painter->setPen(Qt::blue);
-    QPair<QPointF, QPointF> actionPoints = mEditAction->getSelection(
-      mSelectBegin, mSelectEnd);
-    painter->drawLine(actionPoints.first, actionPoints.second);
+
+    switch (mEditAction->getSelectionType()) {
+      case EditAction::SelectionType::Line: {
+        QPair<QPointF, QPointF> actionPoints = mEditAction->getSelection(
+          mSelectBegin, mSelectEnd);
+        painter->setBrush(Qt::blue);
+        painter->drawEllipse(actionPoints.first, 2, 2);
+        painter->drawEllipse(actionPoints.second, 2, 2);
+        painter->drawLine(actionPoints.first, actionPoints.second);
+
+        break;
+      }
+
+      default:
+        break;
+    }
   }
 }
 
