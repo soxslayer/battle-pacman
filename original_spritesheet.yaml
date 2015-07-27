@@ -1,0 +1,20 @@
+---
+
+filename: "spritesheet.png"
+tileInfo: { x: 4, y: 5, width: 12, height: 12 }
+sprites:
+  GhostHouseTLCorner: [ 13, 7 ]
+  GhostHouseTRCorner: { x: 12, y: 7 }
+  GhostHouseBLCorner: { x: 15, y: 7 }
+  GhostHouseBRCorner: { x: 14, y: 7 }
+  GhostHouseLWallEnd: { x: 17, y: 7 }
+  GhostHouseRWallEnd: { x: 16, y: 7 }
+  GhostHouseDoor: { x: 14, y: 6 }
+  OutsideTLCorner: { x: 17, y: 6 }
+  OutsideTRCorner: { x: 16, y: 6 }
+  OutsideBLCorner: { x: 21, y: 6 }
+  OutsideBRCorner: { x: 20, y: 6 }
+  OutsideTWall: { x: 26, y: 6 }
+  OutsideBWall: { x: 28, y: 6 }
+  OutsideRWall: { x: 18, y: 6 }
+  OutsideLWall: { x: 19, y: 6 }

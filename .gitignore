@@ -1,0 +1,6 @@
+build
+*.swp
+*.o
+Makefile
+ui_*
+level_editor

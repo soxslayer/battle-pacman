@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LevelEditor</class>
+ <widget class="QMainWindow" name="LevelEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1008</width>
+    <height>749</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="MazeEditWidget" name="mazeEdit"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionNewMaze"/>
+   <addaction name="actionOpenMaze"/>
+   <addaction name="separator"/>
+   <addaction name="actionSaveMaze"/>
+   <addaction name="actionSaveMazeAs"/>
+   <addaction name="separator"/>
+   <addaction name="actionUndo"/>
+   <addaction name="actionRedo"/>
+   <addaction name="separator"/>
+   <addaction name="actionDrawPath"/>
+   <addaction name="actionDrawWall"/>
+   <addaction name="actionWarp"/>
+   <addaction name="actionDots"/>
+   <addaction name="actionPowerPellet"/>
+   <addaction name="actionPacmanStart"/>
+   <addaction name="actionEnableGrid"/>
+  </widget>
+  <action name="actionNewMaze">
+   <property name="icon">
+    <iconset theme="document-new"/>
+   </property>
+   <property name="text">
+    <string>New </string>
+   </property>
+   <property name="toolTip">
+    <string>New Maze</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionSaveMaze">
+   <property name="icon">
+    <iconset theme="document-save"/>
+   </property>
+   <property name="text">
+    <string>Save Maze</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Maze</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveMazeAs">
+   <property name="icon">
+    <iconset theme="document-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save Maze As...</string>
+   </property>
+   <property name="toolTip">
+    <string>Save Maze As...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionOpenMaze">
+   <property name="icon">
+    <iconset theme="document-open"/>
+   </property>
+   <property name="text">
+    <string>Open Maze</string>
+   </property>
+   <property name="toolTip">
+    <string>Open Maze</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionDrawPath">
+   <property name="text">
+    <string>Path</string>
+   </property>
+   <property name="toolTip">
+    <string>Draw Path</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionDrawWall">
+   <property name="text">
+    <string>Wall</string>
+   </property>
+   <property name="toolTip">
+    <string>Draw Wall</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset theme="edit-undo"/>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="toolTip">
+    <string>Undo Actiond</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset theme="edit-redo"/>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="toolTip">
+    <string>Redo Action</string>
+   </property>
+  </action>
+  <action name="actionWarp">
+   <property name="text">
+    <string>Warp</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Warp Portal</string>
+   </property>
+  </action>
+  <action name="actionDots">
+   <property name="text">
+    <string>Dots</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Dots</string>
+   </property>
+  </action>
+  <action name="actionPowerPellet">
+   <property name="text">
+    <string>Power Pellet</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Power Pellet</string>
+   </property>
+  </action>
+  <action name="actionPacmanStart">
+   <property name="text">
+    <string>Pacman Start</string>
+   </property>
+   <property name="toolTip">
+    <string>Add Pacman Start</string>
+   </property>
+  </action>
+  <action name="actionEnableGrid">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>EnableGrid</string>
+   </property>
+   <property name="toolTip">
+    <string>Enable Grid</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MazeEditWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>src/MazeEditWidget.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
