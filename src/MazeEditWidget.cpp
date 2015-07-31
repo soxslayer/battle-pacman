@@ -5,9 +5,9 @@
 #include <QRectF>
 
 #include "MazeEditWidget.h"
-#include "MazeTileGraphicsItem.h"
 
 #include "Maze.h"
+#include "MazeTileGraphicsItem.h"
 
 MazeEditWidget::MazeEditWidget(QWidget* parent)
   : QGraphicsView(parent),
@@ -22,25 +22,19 @@ MazeEditWidget::MazeEditWidget(QWidget* parent)
   renderMaze();
 }
 
-MazeEditWidget::~MazeEditWidget()
-{
-  if (mEditAction)
-    delete mEditAction;
-}
-
 void MazeEditWidget::setEnableGrid(bool grid)
 {
   mGrid = grid;
   viewport()->update();
 }
 
-void MazeEditWidget::setEditAction(EditAction* editAction)
+void MazeEditWidget::setSelection(Selection* selection)
 {
-  if (mEditAction)
-    mEditAction->deleteLater();
+  if (mSelection)
+    mSelection->deleteLater();
 
-  mEditAction = editAction;
-  mEditAction->setParent(this);
+  mSelection = selection;
+  mSelection->setParent(this);
 }
 
 void MazeEditWidget::drawForeground(QPainter* painter, const QRectF& rect)
@@ -69,24 +63,11 @@ void MazeEditWidget::drawForeground(QPainter* painter, const QRectF& rect)
     }
   }
 
-  if (mSelectActive && mEditAction) {
+  if (mSelectActive && mSelection) {
     painter->setPen(Qt::blue);
+    painter->setBrush(Qt::blue);
 
-    switch (mEditAction->getSelectionType()) {
-      case EditAction::SelectionType::Line: {
-        QPair<QPointF, QPointF> actionPoints = mEditAction->getSelection(
-          mSelectBegin, mSelectEnd);
-        painter->setBrush(Qt::blue);
-        painter->drawEllipse(actionPoints.first, 2, 2);
-        painter->drawEllipse(actionPoints.second, 2, 2);
-        painter->drawLine(actionPoints.first, actionPoints.second);
-
-        break;
-      }
-
-      default:
-        break;
-    }
+    mSelection->draw(*painter);
   }
 }
 
@@ -115,26 +96,28 @@ void MazeEditWidget::renderMaze()
 
 void MazeEditWidget::mousePressEvent(QMouseEvent* event)
 {
-  if (!mEditAction)
+  if (!mSelection)
     return;
 
   mSelectActive = true;
-  mSelectBegin = mapToScene(event->pos());
+  mSelection->setBegin(mapToScene(event->pos()));
 }
 
 void MazeEditWidget::mouseMoveEvent(QMouseEvent* event)
 {
-  if (!mEditAction)
+  if (!mSelection)
     return;
 
-  mSelectEnd = mapToScene(event->pos());
+  mSelection->setEnd(mapToScene(event->pos()));
   viewport()->update();
 }
 
 void MazeEditWidget::mouseReleaseEvent(QMouseEvent* event)
 {
-  (void)event;
+  if (mSelectActive && mSelection) {
+    mSelection->setEnd(mapToScene(event->pos()));
 
-  mSelectActive = false;
-  viewport()->update();
+    mSelectActive = false;
+    viewport()->update();
+  }
 }

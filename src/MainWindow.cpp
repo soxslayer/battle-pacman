@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 
-#include "EditAction.h"
-#include "PathEditAction.h"
+#include "LineSelection.h"
+#include "QuantizedSelection.h"
 
 MainWindow::MainWindow(QWidget* parent)
   : QMainWindow(parent)
@@ -19,6 +19,11 @@ void MainWindow::on_actionDrawPath_triggered()
   int width = mUi.mazeEdit->tileWidth();
   int height = mUi.mazeEdit->tileHeight();
 
-  EditAction* action = new PathEditAction(width, height);
-  mUi.mazeEdit->setEditAction(action);
+  LineSelection* lSel = new LineSelection(true);
+  QuantizedSelection* qSel = new QuantizedSelection(*lSel, QRectF(width / 2,
+                                                                  height / 2,
+                                                                  width,
+                                                                  height));
+
+  mUi.mazeEdit->setSelection(qSel);
 }

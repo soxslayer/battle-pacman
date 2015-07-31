@@ -3,11 +3,10 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include <QPixmap>
-#include <QPointF>
 
 #include "MazeBuilder.h"
 
-#include "EditAction.h"
+#include "Selection.h"
 #include "SpriteSheet.h"
 
 class QMouseEvent;
@@ -21,10 +20,9 @@ class MazeEditWidget : public QGraphicsView
 
 public:
   MazeEditWidget(QWidget* parent = nullptr);
-  ~MazeEditWidget();
 
   void setEnableGrid(bool grid);
-  void setEditAction(EditAction* editAction);
+  void setSelection(Selection* selection);
   int tileWidth() const { return mSpriteSheet.tileInfo().width(); }
   int tileHeight() const { return mSpriteSheet.tileInfo().height(); }
 
@@ -39,10 +37,8 @@ private:
   MazeBuilder mMazeBuilder;
   SpriteSheet mSpriteSheet;
   bool mGrid = false;
-  QPointF mSelectBegin;
-  QPointF mSelectEnd;
   bool mSelectActive = false;
-  EditAction* mEditAction = nullptr;
+  Selection* mSelection = nullptr;
 
   void renderMaze();
 };

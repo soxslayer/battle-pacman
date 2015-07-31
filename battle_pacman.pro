@@ -17,22 +17,24 @@ FORMS += \
   ui/LevelEditor.ui
 
 HEADERS += \
-  src/EditAction.h \
+  src/LineSelection.h \
   src/MainWindow.h \
   src/Maze.h \
   src/MazeBuilder.h \
   src/MazeEditWidget.h \
   src/MazeTileGraphicsItem.h \
-  src/PathEditAction.h \
+  src/QuantizedSelection.h \
+  src/Selection.h \
   src/SpriteSheet.h
 
 SOURCES += \
-  src/EditAction.cpp \
+  src/LineSelection.cpp \
   src/Main.cpp \
   src/MainWindow.cpp \
   src/MazeTileGraphicsItem.cpp \
   src/Maze.cpp \
   src/MazeBuilder.cpp \
   src/MazeEditWidget.cpp \
-  src/PathEditAction.cpp \
+  src/QuantizedSelection.cpp \
+  src/Selection.cpp \
   src/SpriteSheet.cpp
